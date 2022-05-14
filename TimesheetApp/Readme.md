@@ -1,27 +1,48 @@
-# TimeSheet App Template
+# **TimeSheet App**
+<img src="https://github.com/sumedhsharangdhar/PowerPlatform/blob/main/TimesheetApp/TimesheetHome.png" width="250" height="400"> </img>
+
+# Description 
+The timesheet is app is used to simply submit the monthly timesheets using PowerApps. The datasource used is SharePoint. 
+<br>
+There are mainly 3 components : 
+1) PowerApps for submitting the timesheet entry
+2) Powerautomate flow for automatically creating month-wide entries for all the users with no of hours = 0.
+3) SharePoint lists to store the data. 
+
+# Template
 
 ### Step 1
-Create a SP list with the following name: **UserProfileList**
+1) Create a SP list with the following name: **UserProfileList**
+<br/> This list cointains the list of users who are supposed to be using the app.
 
 <table>
   <th>Column Name</th>  <th>Column Type</th>  <th>Comments</th> 
   <tr> <td>Title</td>  <td>Single line of Text</td> <td>This will be the default column that gets created in a SharePoint list</td> </tr>
-  <tr> <td>Detail</td>  <td>Multiple Lines of Text</td> <td></td> </tr>
-   <tr> <td>From</td>  <td>Date and Time</td> <td></td> </tr>
-   <tr> <td>To</td>  <td>Date and Time</td> <td></td> </tr>
-  <tr> <td>Leave Type</td>  <td>Choice</td> <td>Choice values:<br>⛱️ Vacation<br>🤒 Sick Leave<br>🎈 Floating Holiday<br>⚖️ Jury Duty<br>💔 Bereavement</td> </tr>
-   <tr> <td>Status</td>  <td>Choice</td> <td>Choice values:<br>Declined<br>Approved<br>Pending Manager Approval<br>Pending HR Approval</tr>
-   <tr> <td>Manager</td>  <td>Person or Group</td> <td></td> </tr>
-   <tr> <td>HR</td>  <td>Person or Group</td> <td></td> </tr>
-   <tr> <td>Approval Comments</td>  <td>Multiple Lines of Text</td> <td></td> </tr>
-    <tr> <td>Approval Link</td>  <td>Single Line of Text</td> <td></td> </tr>
+  <tr> <td>UserName</td>  <td>Single line of Text</td> <td></td> </tr>
+  <tr> <td>Project</td>  <td>Choice</td> <td>Choice values:<br>Finance<br>HR<br> etc..</td> </tr>
+</table>
+
+2) Create a SP list with the following name: **TimesheetData**
+<br> This list is to store the data about hours filled by users using PowerApps
+<table>
+  <th>Column Name</th>  <th>Column Type</th>  <th>Comments</th> 
+  <tr> <td>Title</td>  <td>Single line of Text</td> <td>This will be the default column that gets created in a SharePoint list</td> </tr>
+  <tr> <td>Date</td>  <td>Date and Time</td> <td></td> </tr>
+  <tr> <td>No of Hours</td>  <td>Number</td> <td></td> </tr>
+  <tr> <td>UserName</td>  <td>Single line of Text</td> <td></td> </tr>
+  <tr> <td>Project</td>  <td>Choice</td> <td>Choice values:<br>Finance<br>HR<br> etc..</td> </tr>
 </table>
 
 ### Step 2
-[Import App zip file](https://github.com/rdorrani/PowerApps/blob/master/LeaveRequestApp/LeaveRequestApp_20210602180703.zip) in Power Apps. <br>Imported zip file will contain both the App & the flow. 
+[Import App zip file](https://github.com/sumedhsharangdhar/PowerPlatform/blob/main/TimesheetApp/TimesheetApp_PowerApp.zip) in Power Apps. <br>Imported zip file will contain App. 
 
 ### Step 3
-Edit the App.  <br>On App OnStart function, Set the HR Admin details as follows: **Set(HRManagerEmail, "place email of HR Admin here")** <br>Remove the SharePoint data source from the App & add a new SharePoint data source connection with your newly created “Leave Request” list. 
+Edit the App.  <br>Remove the SharePoint data source from the App & add a new SharePoint data source connection with your newly created “UserPfileList” and "TimesheetData" list. 
 
 ### Step 4
-Go to flow.microsoft.com <br>Turn on the “Leave Request Approval Process flow” <br>Edit the flow and update the SiteURL action to point to your SharePoint site where the new “Leave Request” list has been created.
+[Import PowerAutomate zip file](https://github.com/sumedhsharangdhar/PowerPlatform/blob/main/TimesheetApp/MonthWiseDataAddition_Flow.zip) in PowerAutomate.
+
+### Step 5
+Go to flow.microsoft.com <br>Turn on the flow “MonthWiseDataAddition” <br>Edit the flow and update the SiteURL action to point to your SharePoint site where the new “UserProfileList” and "TimesheetData" lists have been created.
+
+## Happy coding!
