@@ -5,7 +5,7 @@
 The timesheet is app is used to simply submit the monthly timesheets using PowerApps. The datasource used is SharePoint. 
 <br>
 There are mainly 3 components : 
-1) PowerApps for submitting the timesheet entry
+1) PowerApps for submitting the timesheet entry having customly designed Calendar 
 2) Powerautomate flow for automatically creating month-wide entries for all the users with no of hours = 0.
 3) SharePoint lists to store the data. 
 
@@ -45,4 +45,4 @@ Edit the App.  <br>Remove the SharePoint data source from the App & add a new Sh
 ### Step 5
 Go to flow.microsoft.com <br>Turn on the flow “MonthWiseDataAddition” <br>Edit the flow and update the SiteURL action to point to your SharePoint site where the new “UserProfileList” and "TimesheetData" lists have been created.
 
-## Happy coding!
+## < / >
